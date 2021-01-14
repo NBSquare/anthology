@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useRef, useState } from 'react';
 import './css/Jumbotron.css';
 
-const Jumbotron = ({ children, text, backgroundImage }) => {
+const Jumbotron = ({ children, backgroundImage }) => {
   const [visible, setVisible] = useState(false);
 
   const ref = useRef(null);
