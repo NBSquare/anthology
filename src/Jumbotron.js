@@ -26,7 +26,7 @@ const Jumbotron = ({ children, text, backgroundImage }) => {
       style={{ backgroundImage: `url(${backgroundImage})` }}
     >
       <div
-        className='jumboContent d-flex flex-column align-items-center justify-content-center'
+        className='jumboContent d-flex flex-column flex-wrap align-items-center justify-content-center'
         style={visible ? {} : {'opacity': 0, 'marginTop': '50px'}}
       >
         {children}
