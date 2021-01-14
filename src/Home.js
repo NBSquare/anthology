@@ -7,14 +7,16 @@ import server from './server.jpg';
 const Home = () => {
   return (
     <div id='content'>
-      <Jumbotron
-        text='The Future of Entertainment is Here.'
-        buttonText='Watch Trailers'
-        buttonAction={() => alert('starting!')}
-        backgroundImage={backgroundImage}
-      />
-      <Jumbotron text='Your Favorite Creators. And nobody else.' backgroundImage={privacy} />
-      <Jumbotron text='The only spoiler-free streaming service.' backgroundImage={server} />
+      <Jumbotron backgroundImage={backgroundImage}>
+        <h1 className='text-light mb-3'>The Future of Entertainment is Here.</h1>
+        <button className='btn btn-primary btn-lg mt-4' onClick={() => alert('starting')}>Watch Trailers</button>
+      </Jumbotron>
+      <Jumbotron backgroundImage={privacy}>
+        <h1 className="text-light mb-3">Your Favorite Creators. And nobody else.</h1>
+      </Jumbotron>
+      <Jumbotron backgroundImage={server}>
+        <h1 className="text-light mb-3">The only spoiler-free streaming service.</h1>
+      </Jumbotron>
     </div>
   );
 };
