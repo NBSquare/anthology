@@ -1,11 +1,11 @@
 .jumboWrapper {
-  min-height: 700px;
+  height: 700px;
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-.jumboWrapper::before {
+.jumboImage::before {
   min-height: 700px;
   width: 100%;
   content: "";
@@ -17,15 +17,13 @@
   z-index: 1;
   height: inherit;
   width: inherit;
-  opacity: 1;
-  margin-top: 0;
-  transition: opacity 0.5s, margin-top .75s;
-  transition-timing-function: ease-out;
 }
 
 .jumboContent h1 {
-  font-family: josefin-sans,sans-serif;
-  font-weight: 700;
   font-size: 60px;
   text-transform: uppercase;
+}
+
+.fullWidth {
+  width: 100%;
 }

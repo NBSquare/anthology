@@ -1,8 +1,10 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Footer from './Footer';
 import Home from './Home';
+import OurStory from './OurStory';
 import Nav from './Nav';
 import './css/App.css';
+import News from './News';
 
 function App() {
   return (
@@ -10,7 +12,8 @@ function App() {
       <Router>
         <Nav
           locations={[
-            { href: '/news', name: 'News' },
+            { href: '/our-story', name: 'Our Story'},
+            { href: '/news', name: 'News'},
             { href: '/videos', name: 'Videos' },
           ]}
         />
@@ -19,8 +22,11 @@ function App() {
           <Route exact path='/'>
             <Home />
           </Route>
+          <Route path='/our-story'>
+            <OurStory />
+          </Route>
           <Route path='/news'>
-            <h1>News</h1>
+            <News />
           </Route>
           <Route path='/videos'>
             <h1>Videos</h1>

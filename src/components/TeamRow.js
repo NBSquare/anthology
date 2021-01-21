@@ -1,10 +1,11 @@
 import React, { useLayoutEffect, useRef, useState } from 'react';
-import './css/Jumbotron.css';
+import Animated from './Animated';
+import Member from './Member';
 
-const Jumbotron = ({ children, backgroundImage }) => {
+const TeamRow = () => {
   const [visible, setVisible] = useState(false);
-
   const ref = useRef(null);
+  
   useLayoutEffect(() => {
     const top = ref.current.getBoundingClientRect().top;
     const onScroll = () => {
@@ -20,19 +21,12 @@ const Jumbotron = ({ children, backgroundImage }) => {
   }, []);
 
   return (
-    <div
-      className='jumboWrapper d-flex flex-column align-items-center justify-content-center p-5'
-      ref={ref}
-      style={{ backgroundImage: `url(${backgroundImage})` }}
-    >
-      <div
-        className='jumboContent d-flex flex-column flex-wrap align-items-center justify-content-center'
-        style={visible ? {} : {'opacity': 0, 'marginTop': '50px'}}
-      >
-        {children}
-      </div>
+    <div className='row' ref={ref}>
+      <Animated visible={visible}>
+        <div className="card mb-3">FooBarBaz</div>
+      </Animated>
     </div>
-  );
+  )
 };
 
-export default Jumbotron;
+export default TeamRow;

@@ -1,11 +1,12 @@
 import React from 'react';
 import logo from './logo-light.svg';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './css/Nav.css';
 
-const Nav = ({ locations }) => {
+const Nav = ({ hasBackground, locations }) => {
+  const backgroundColor = useLocation().pathname === '/' ? 'bg-transparent nav-transparent' : 'bg-primary';
   return (
-    <nav className='navbar navbar-expand-lg navbar-dark bg-transparent'>
+    <nav className={`navbar navbar-expand-lg navbar-dark ${backgroundColor}`}>
       <div className='container-fluid px-4'>
         <Link to='/' className='navbar-brand'>
           <img src={logo} alt='' height='33' />
