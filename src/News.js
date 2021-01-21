@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from './components/Card';
-import profile from './media/profile.jpg';
+import profile from './media/blinn.jpg';
 
 const News = () => {
   return (

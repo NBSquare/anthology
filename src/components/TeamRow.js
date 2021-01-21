@@ -1,15 +1,15 @@
 import React, { useLayoutEffect, useRef, useState } from 'react';
-import Animated from './components/Animated';
-import Member from './components/Member';
+import Animated from './Animated';
+import Member from './Member';
 
-const TeamRow = () => {
+const TeamRow = ({ members }) => {
   const [visible, setVisible] = useState(false);
   const ref = useRef(null);
   
   useLayoutEffect(() => {
     const top = ref.current.getBoundingClientRect().top;
     const onScroll = () => {
-      if (top < window.scrollY + window.innerHeight * 0.5) {
+      if (top < window.scrollY + window.innerHeight * 0.75) {
         // Animate.
         setVisible(true);
       }
@@ -21,9 +21,11 @@ const TeamRow = () => {
   }, []);
 
   return (
-    <div className='row' ref={ref}>
-      <Animated visible={visible}>
-        <div className="card mb-3">FooBarBaz</div>
+    <div ref={ref}>
+      <Animated classNames='row mb-5' visible={visible}>
+        {members.map((member) => (
+          <Member name={member.name} title={member.title} picture={member.picture} />
+        ))}
       </Animated>
     </div>
   )
