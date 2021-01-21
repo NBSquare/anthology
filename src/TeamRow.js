@@ -1,6 +1,6 @@
 import React, { useLayoutEffect, useRef, useState } from 'react';
-import Animated from './Animated';
-import Member from './Member';
+import Animated from './components/Animated';
+import Member from './components/Member';
 
 const TeamRow = () => {
   const [visible, setVisible] = useState(false);

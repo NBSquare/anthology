@@ -1,8 +1,8 @@
 import React from 'react';
-import Jumbotron from './Jumbotron';
-import backgroundImage from './placeholder.jpg';
-import privacy from './privacy.jpg';
-import server from './server.jpg';
+import Jumbotron from './components/Jumbotron';
+import backgroundImage from './media/placeholder.jpg';
+import privacy from './media/privacy.jpg';
+import server from './media/server.jpg';
 
 const Home = () => {
   return (

@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Footer from './Footer';
+import Footer from './components/Footer';
 import Home from './Home';
 import OurStory from './OurStory';
-import Nav from './Nav';
+import Nav from './components/Nav';
 import './css/App.css';
 import News from './News';
 

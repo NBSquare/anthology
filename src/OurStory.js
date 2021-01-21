@@ -1,6 +1,6 @@
 import React, { useLayoutEffect, useRef, useState } from "react";
-import Jumbotron from "./Jumbotron";
-import Animated from "./Animated";
+import Jumbotron from "./components/Jumbotron";
+import Animated from "./components/Animated";
 import "./css/OurStory.css";
 import TeamRow from "./TeamRow";
 

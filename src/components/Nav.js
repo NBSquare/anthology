@@ -1,7 +1,7 @@
 import React from 'react';
-import logo from './logo-light.svg';
+import logo from '../media/logo-light.svg';
 import { Link, useLocation } from 'react-router-dom';
-import './css/Nav.css';
+import '../css/Nav.css';
 
 const Nav = ({ hasBackground, locations }) => {
   const backgroundColor = useLocation().pathname === '/' ? 'bg-transparent nav-transparent' : 'bg-primary';
