@@ -2,15 +2,25 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Footer from './components/Footer';
 import Home from './Home';
 import OurStory from './OurStory';
+import NotFound from './NotFound';
 import Nav from './components/Nav';
+import LoginModal from './components/LoginModal';
 import './css/App.css';
 import News from './News';
+import { useEffect, useState } from 'react';
 
 function App() {
-  return (
+  const [username, setUsername] = useState(localStorage.getItem('username') || '');
+
+  useEffect(() => {
+    localStorage.setItem('username', username)
+  }, [username]);
+
+  return username === '' ? (
     <div id='app' className='d-flex flex-column'>
       <Router>
         <Nav
+          loggedIn={false}
           locations={[
             { href: '/our-story', name: 'Our Story'},
             { href: '/news', name: 'News'},
@@ -31,10 +41,30 @@ function App() {
           <Route path='/videos'>
             <h1>Videos</h1>
           </Route>
+          <Route>
+            <NotFound />
+          </Route>
         </Switch>
         <Footer />
       </Router>
+
+      <LoginModal setUsername={setUsername}/>
     </div>
+  ) : (
+    <Router>
+      <Nav
+        loggedIn={true}
+        onLogout={() => setUsername('')}
+        locations={[]}
+      />
+
+      <Switch>
+        <Route path='/menu'>
+          <h1>Main Menu</h1>
+        </Route>
+      </Switch>
+      <Footer />
+    </Router>
   );
 }
 

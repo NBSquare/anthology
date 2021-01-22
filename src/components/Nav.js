@@ -3,7 +3,7 @@ import logo from '../media/logo-light.svg';
 import { Link, useLocation } from 'react-router-dom';
 import '../css/Nav.css';
 
-const Nav = ({ hasBackground, locations }) => {
+const Nav = ({ loggedIn, onLogout, locations }) => {
   const backgroundColor = useLocation().pathname === '/' ? 'bg-transparent nav-transparent' : 'bg-primary';
   const buttonColor = useLocation().pathname === '/' ? 'btn-primary' : 'btn-dark';
   return (
@@ -36,7 +36,11 @@ const Nav = ({ hasBackground, locations }) => {
               <span className='m-4'></span>
             </li>
             <li className='nav-item'>
-              <button className={`btn ${buttonColor}`}>Free Trial</button>
+              {loggedIn ? (
+                <button className={`btn ${buttonColor}`} type='button' onClick={onLogout}>Log Out</button>
+              ) : (
+                <button className={`btn ${buttonColor}`} type='button' data-bs-toggle='modal' data-bs-target='#login-modal'>Free Trial</button>
+              )}
             </li>
           </ul>
         </div>
