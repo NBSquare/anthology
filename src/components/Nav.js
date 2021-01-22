@@ -5,6 +5,7 @@ import '../css/Nav.css';
 
 const Nav = ({ hasBackground, locations }) => {
   const backgroundColor = useLocation().pathname === '/' ? 'bg-transparent nav-transparent' : 'bg-primary';
+  const buttonColor = useLocation().pathname === '/' ? 'btn-primary' : 'btn-dark';
   return (
     <nav className={`navbar navbar-expand-lg navbar-dark ${backgroundColor}`}>
       <div className='container-fluid px-4'>
@@ -35,7 +36,7 @@ const Nav = ({ hasBackground, locations }) => {
               <span className='m-4'></span>
             </li>
             <li className='nav-item'>
-              <button className='btn btn-primary'>Free Trial</button>
+              <button className={`btn ${buttonColor}`}>Free Trial</button>
             </li>
           </ul>
         </div>

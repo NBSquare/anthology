@@ -2,7 +2,7 @@ import React, { useLayoutEffect, useRef, useState } from 'react';
 import Animated from './Animated';
 import Member from './Member';
 
-const TeamRow = ({ members }) => {
+const TeamRow = ({ classNames, members }) => {
   const [visible, setVisible] = useState(false);
   const ref = useRef(null);
   
@@ -21,7 +21,7 @@ const TeamRow = ({ members }) => {
   }, []);
 
   return (
-    <div ref={ref}>
+    <div className={classNames} ref={ref}>
       <Animated classNames='row mb-5' visible={visible}>
         {members.map((member) => (
           <Member name={member.name} title={member.title} picture={member.picture} />
