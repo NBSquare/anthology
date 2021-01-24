@@ -1,13 +1,28 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { forwardRef, useState } from 'react';
+import { Modal as bsModal} from 'bootstrap';
+import Modal from './Modal';
 import '../css/LoginModal.css';
 
-const LoginModal = ({ setUsername }) => {
+const LoginModal = ({ open, onClose, setUsername }) => {
   const [alertType, setAlertType] = useState('');
   const [alertContent, setAlertContent] = useState('');
 
   const [usernameValue, setUsernameValue] = useState('');
   const [passwordValue, setPasswordValue] = useState('');
+
+  const loginSuccess = () => {
+    const messageDelay = 500;
+    setAlertType('alert-info');
+    setAlertContent('Logging in...');
+    setTimeout(() => {
+      setAlertType('alert-success');
+      setAlertContent(`Welcome, ${usernameValue}!`);
+    }, messageDelay);
+    setTimeout(() => {
+      setUsername(usernameValue);
+      window.location = '/';
+    }, messageDelay * 2);
+  };
 
   const resetPassword = () => {
     const messageDelay = 1000;
@@ -18,52 +33,54 @@ const LoginModal = ({ setUsername }) => {
   }
 
   const submit = () => {
-    if (usernameValue !== '' && passwordValue === 'TisbertPrimeRocks') {
-      // Success
-      setAlertType('');
-      setAlertContent('');
-      setUsername(usernameValue);
-      // history.push('/menu');
-      window.location = '/menu';
-    } else if (usernameValue === '') {
-      setAlertType('alert-warning');
-      setAlertContent('Please include your username.');
-    } else {
-      // Failure.
-      setAlertType('alert-danger');
-      setAlertContent('Password was incorrect. Try resetting it!');
-    }
+    if (usernameValue !== '') loginSuccess();
+    // if (usernameValue !== '' && passwordValue === 'TisbertPrimeRocks') {
+    //   // Success
+    //   setAlertType('');
+    //   setAlertContent('');
+    //   setUsername(usernameValue);
+    //   window.location = '/';
+    // } else if (usernameValue === '') {
+    //   setAlertType('alert-warning');
+    //   setAlertContent('Please include your username.');
+    // } else {
+    //   // Failure.
+    //   setAlertType('alert-danger');
+    //   setAlertContent('Password was incorrect. Try resetting it!');
+    // }
   };
 
-  return (
+  const body = (
     <>
-      <div className='modal fade' id='login-modal' tabIndex={-1}>
-      <div className='modal-dialog'>
-        <div className='modal-content'>
-          <div className='modal-header'>
-            <h4>Log In</h4>
-            <button type='button' className='btn-close' data-bs-dismiss='modal'></button>
-          </div>
-          <div className='modal-body'>
-            {alertType && <div className={`alert ${alertType}`} role='alert'>{alertContent}</div>}
-            <form>
-              <label htmlFor='usernameField' className='form-label'>Username</label>
-              <input type='text' name='username' id='username-field' className='form-control' value={usernameValue} onChange={e => setUsernameValue(e.target.value)} />
+      {alertType && <div className={`alert ${alertType}`} role='alert'>{alertContent}</div>}
+      <form onSubmit={submit}>
+        <label htmlFor='usernameField' className='form-label'>Username</label>
+        <input type='text' name='username' id='username-field' className='form-control' value={usernameValue} onChange={e => setUsernameValue(e.target.value)} />
 
-              <label htmlFor='password-field' className='form-label'>Password</label>
-              <input type='password' name='password' id='password-field' className='form-control' value={passwordValue} onChange={e => setPasswordValue(e.target.value)} />
-            </form>
-          </div>
-          <div className='modal-footer'>
-            <button type='button' className='btn btn-link' onClick={resetPassword}>Reset Password</button>
-            <button className='btn btn-secondary' data-bs-dismiss='modal'>Cancel</button>
-            <button type='button' className='btn btn-primary' onClick={submit}>Log In</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </>
-  )
-}
+        <label htmlFor='password-field' className='form-label'>Password</label>
+        <input type='password' name='password' id='password-field' className='form-control' value={passwordValue} onChange={e => setPasswordValue(e.target.value)} />
+        <input type='submit' value='' className='d-none' />
+      </form>
+    </>
+  );
+
+  const footer = (
+    <>
+      <button type='button' className='btn btn-link' onClick={resetPassword}>Reset Password</button>
+      <button className='btn btn-secondary' onClick={onClose}>Cancel</button>
+      <button type='button' className='btn btn-primary' onClick={submit}>Log In</button>
+    </>
+  );
+
+  return (
+    <Modal
+      title='Log In'
+      body={body}
+      footer={footer}
+      open={open}
+      onClose={onClose}
+    />
+  );
+};
 
 export default LoginModal;
