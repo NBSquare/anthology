@@ -2,5 +2,7 @@
     "files.associations": {
         "*.js": "javascriptreact"
     },
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
+    "prettier.jsxSingleQuote": true,
+    "prettier.singleQuote": true
 }

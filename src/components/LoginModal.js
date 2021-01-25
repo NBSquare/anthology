@@ -50,6 +50,12 @@ const LoginModal = ({ open, onClose, setUsername }) => {
     // }
   };
 
+  const closeModal = () => {
+    onClose();
+    setAlertType('');
+    setAlertContent('');
+  };
+
   const body = (
     <>
       {alertType && <div className={`alert ${alertType}`} role='alert'>{alertContent}</div>}
@@ -67,7 +73,7 @@ const LoginModal = ({ open, onClose, setUsername }) => {
   const footer = (
     <>
       <button type='button' className='btn btn-link' onClick={resetPassword}>Reset Password</button>
-      <button className='btn btn-secondary' onClick={onClose}>Cancel</button>
+      <button className='btn btn-secondary' onClick={closeModal}>Cancel</button>
       <button type='button' className='btn btn-primary' onClick={submit}>Log In</button>
     </>
   );
@@ -78,7 +84,7 @@ const LoginModal = ({ open, onClose, setUsername }) => {
       body={body}
       footer={footer}
       open={open}
-      onClose={onClose}
+      onClose={closeModal}
     />
   );
 };

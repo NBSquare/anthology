@@ -1,5 +1,5 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { Modal as bsModal} from 'bootstrap';
+import { Modal as bsModal } from 'bootstrap';
 
 const Modal = ({ title, body, footer, open, onClose }) => {
   const [modal, setModal] = useState(undefined);
@@ -19,7 +19,7 @@ const Modal = ({ title, body, footer, open, onClose }) => {
     if (open) {
       modal.show();
     } else {
-      console.log('trigger')
+      console.log('trigger');
       modal.hide();
     }
   }, [modal, open]);
@@ -37,7 +37,7 @@ const Modal = ({ title, body, footer, open, onClose }) => {
         </div>
       </div>
     </div>
-  )
+  );
 };
 
 export default Modal;
