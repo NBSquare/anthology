@@ -2,7 +2,6 @@ import React, { useLayoutEffect, useRef, useState } from "react";
 import Jumbotron from "./components/Jumbotron";
 import Animated from "./components/Animated";
 import "./css/OurStory.css";
-import TeamRow from "./components/TeamRow";
 
 import blinn from "./media/blinn.jpg";
 import cekirge from "./media/cekirge.jpg";
@@ -12,6 +11,43 @@ import elston from "./media/elston.jpg";
 import schneider from "./media/schneider.jpg";
 import sabel from "./media/sabel.jpg";
 import shashkina from "./media/shashkina.jpg";
+
+const Member = ({ name, title, picture }) => (
+  <div className='col-sm mb-3 d-flex flex-column align-items-center'>
+    <img src={picture} alt='' className='mb-2 profile'/>
+    <h4>{name}</h4>
+    <h5>{title}</h5>
+  </div>
+);
+
+const TeamRow = ({ classNames, members }) => {
+  const [visible, setVisible] = useState(false);
+  const ref = useRef(null);
+  
+  useLayoutEffect(() => {
+    const top = ref.current.getBoundingClientRect().top;
+    const onScroll = () => {
+      if (top < window.scrollY + window.innerHeight * 0.75) {
+        // Animate.
+        setVisible(true);
+      }
+    };
+
+    onScroll();
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  return (
+    <div className={classNames} ref={ref}>
+      <Animated classNames='row mb-5' visible={visible}>
+        {members.map((member) => (
+          <Member name={member.name} title={member.title} picture={member.picture} />
+        ))}
+      </Animated>
+    </div>
+  )
+};
 
 const OurStory = () => {
   const [visible, setVisible] = useState(false);
