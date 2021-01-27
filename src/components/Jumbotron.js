@@ -2,7 +2,7 @@ import React, { useLayoutEffect, useRef, useState } from 'react';
 import Animated from './Animated';
 import '../css/Jumbotron.css';
 
-const Jumbotron = ({ children, backgroundImage }) => {
+const Jumbotron = ({ children, backgroundClass, backgroundImage }) => {
   const [visible, setVisible] = useState(false);
 
   const ref = useRef(null);
@@ -20,15 +20,13 @@ const Jumbotron = ({ children, backgroundImage }) => {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const backgroundClass = backgroundImage ? 'jumboImage' : 'bg-primary';
-
   return (
     <div
-      className={`jumboWrapper d-flex flex-column align-items-center justify-content-center p-5 ${backgroundClass}`}
+      className={`jumbo-wrapper d-flex flex-column align-items-center justify-content-center p-5 ${backgroundImage && 'jumbo-image'} ${backgroundClass}`}
       ref={ref}
       style={{ backgroundImage: `url(${backgroundImage})` }}
     >
-      <Animated classNames='jumboContent d-flex flex-column flex-wrap align-items-center justify-content-center' visible={visible}>
+      <Animated classNames='jumbo-content d-flex flex-column flex-wrap align-items-center justify-content-center' visible={visible}>
         {children}
       </Animated>
     </div>

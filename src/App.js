@@ -83,7 +83,7 @@ function App() {
             color: 'btn-secondary',
             content: (
               <>
-                <i class='bi-cash me-2'></i>
+                <i class='bi bi-cash me-2'></i>
                 <span id='tisbucks-counter'>{tisbucks}</span>
               </>
             ),

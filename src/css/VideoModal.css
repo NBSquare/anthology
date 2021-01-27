@@ -1,0 +1,12 @@
+.video-modal .modal-body {
+  padding: 0;
+  border-top-left-radius: calc(0.3rem - 1px);
+  border-top-right-radius: calc(0.3rem - 1px);
+}
+
+.video-modal .modal-header {
+  position: absolute;
+  border-bottom: 0;
+  z-index: 1;
+  right: 0;
+}

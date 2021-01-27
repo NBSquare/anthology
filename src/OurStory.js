@@ -69,7 +69,7 @@ const OurStory = () => {
 
   return (
     <>
-      <Jumbotron>
+      <Jumbotron backgroundClass='bg-primary'>
         <h1 className="text-light">So much more than entertainment.</h1>
       </Jumbotron>
       <div className="intro" ref={ref}>

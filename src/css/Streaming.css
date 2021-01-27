@@ -1,0 +1,9 @@
+.carousel-inner {
+  width: 75%;
+  margin: auto;
+}
+
+.carousel-indicators {
+  position: initial;
+  margin: auto 0;
+}

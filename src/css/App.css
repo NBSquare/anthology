@@ -8,7 +8,7 @@ font-style: normal/italic;
   width: 100%;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, .display-font {
   font-family: josefin-sans,sans-serif;
   font-weight: 700;
   font-style: normal;
@@ -18,10 +18,16 @@ h3, h4 {
   font-weight: 600;
 }
 
-h5, h6 {
+h5, h6, .display-font {
   font-weight: 400;
 }
 
 #tisbucks-counter {
   text-align: right;
+}
+
+.btn .bi {
+  width: 1em;
+  height: 1em;
+  vertical-align: 0.1em;
 }
