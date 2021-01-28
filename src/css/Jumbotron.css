@@ -31,6 +31,17 @@
   text-transform: uppercase;
 }
 
+.side-image {
+  height: 100%;
+  position: relative;
+}
+
+.side-image img {
+  position: absolute;
+  bottom: 0;
+  max-width: 100%;
+}
+
 .full-width {
   width: 100%;
 }
@@ -41,4 +52,20 @@
 
 .half-height {
   margin-top: 25%;
+}
+
+@media only screen and (max-width: 600px) {
+  .jumbo-content h1 {
+    font-size: 40px;
+  }
+
+  .side-image {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .jumbo-content h1 {
+    font-size: 30px;
+  }
 }

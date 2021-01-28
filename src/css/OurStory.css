@@ -14,3 +14,7 @@ h2 {
   height: 175px;
   border-radius: 50%;
 }
+
+.member h4, .member h5 {
+  text-align: center;
+}

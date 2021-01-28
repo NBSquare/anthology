@@ -25,7 +25,9 @@ const Home = () => {
           <h1 className='text-start text-light mb-3'>Unlock exclusive skins with Tisbucks.</h1>
           <h4 className='text-light text-start'>For purchase with liquid assets only, no credit.</h4>
         </div>
-        <img src={joker} alt='' style={{ height: '700px', marginTop: '0px!important'  }} />
+        <div className='half-width side-image'>
+          <img src={joker} alt='' />
+        </div>
       </Jumbotron>
       <Jumbotron backgroundClass='blur' backgroundImage={server}>
         <h1 className="text-light mb-3">The <u>ONLY</u> spoiler-free streaming service.</h1>

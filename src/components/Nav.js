@@ -1,17 +1,23 @@
-import React from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 import logo from "../media/logo-light.svg";
 import { Link, useLocation } from "react-router-dom";
 import "../css/Nav.css";
 
 const Nav = ({ getBackground, locations, buttons }) => {
+  const [navOpen, setNavOpen] = useState(false);
   const backgroundColor = getBackground(useLocation().pathname);
+
   const buttonColor =
     useLocation().pathname === "/" ? "btn-primary" : "btn-dark";
+
+  const backgroundHeight = navOpen ? 'show-background' : 'hide-background';
+
   return (
     <nav className={`navbar navbar-expand-lg navbar-dark ${backgroundColor}`}>
+      <div id='nav-background' className={`bg-primary collapsing ${backgroundHeight}`}></div>
       <div className="container-fluid px-4">
         <Link to="/" className="navbar-brand">
-          <img src={logo} alt="" height="33" />
+          <img src={logo} alt="" height="30" />
         </Link>
         <button
           className="navbar-toggler"
@@ -21,6 +27,7 @@ const Nav = ({ getBackground, locations, buttons }) => {
           aria-controls="navbarNavDropdown"
           aria-expanded="false"
           aria-label="Toggle navigation"
+          onClick={() => setNavOpen(!navOpen)}
         >
           <span className="navbar-toggler-icon"></span>
         </button>

@@ -1,4 +1,14 @@
 #pageFooter {
-    min-height: 100px;
-    width: 100%;
+  min-height: 100px;
+  width: 100%;
+}
+
+#copyright {
+  padding: 15px 0px;
+  width: 100%;
+}
+
+#pageFooter a {
+  font-size: 25px;
+  padding: 0px 15px 10px;
 }

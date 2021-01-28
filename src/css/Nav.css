@@ -5,3 +5,17 @@
   right: 0;
   z-index: 1;
 }
+
+#nav-background {
+  width: 100%;
+  position: absolute;
+  top: 0;
+}
+
+.show-background {
+  height: 100%;
+}
+
+.hide-background {
+  height: 0%;
+}
